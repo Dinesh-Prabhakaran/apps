@@ -98,13 +98,11 @@ header{background:linear-gradient(135deg,#0a0f1e 0%,#1e3a8a 100%);color:white;pa
 /* Crop step */
 .crop-layout{display:grid;grid-template-columns:1fr 190px;gap:14px;align-items:start}
 .left-col{display:flex;flex-direction:column;gap:10px}
-.toolbar{display:flex;gap:6px;flex-wrap:wrap}
-.tbtn{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid #d1dce8;background:white;color:#334155;transition:all .15s;font-family:inherit}
+.toolbar{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+.toolbar::-webkit-scrollbar{height:4px}.toolbar::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:4px}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;gap:5px;height:36px;padding:0 13px;border-radius:9px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid #d1dce8;background:white;color:#334155;transition:all .15s;font-family:inherit;white-space:nowrap;flex-shrink:0;line-height:1}
 .tbtn:hover{border-color:#1e3a8a;color:#1e3a8a;background:#eff6ff}
 .tbtn.on{border-color:#1e3a8a;color:#1e3a8a;background:#eff6ff}
-.tbtn.accent{border-color:#d1dce8;color:#334155;background:white}
-.tbtn.accent:hover{border-color:#0f766e;color:#0f766e;background:#f0fdf4}
-.tb-sep{width:1px;background:#e2e8f0;align-self:stretch;margin:4px 2px}
 .cvwrap{padding:12px}
 .cvhint{font-size:11px;color:#94a3b8;margin-bottom:8px;display:flex;align-items:center;gap:5px}
 .cvhint kbd{background:#f1f5f9;border:1px solid #d1dce8;border-radius:4px;padding:1px 5px;font-family:monospace;font-size:10px}
@@ -136,8 +134,9 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
 .btn-warning{background:#b45309;color:white;border:none;font-weight:600}
 .btn-warning:hover{background:#92400e;filter:none}
 .btn-sm{padding:9px 13px;font-size:12px}
-.btn-reset{display:none;background:transparent;color:#b45309;border:1.5px solid #fcd34d;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;align-self:flex-end}
-.btn-reset:hover{background:#fef3c7}.btn-reset.show{display:flex;align-items:center;gap:5px}
+.tbtn.reset{display:none;border-color:#fcd34d;color:#b45309;background:#fffbeb}
+.tbtn.reset:hover{background:#fef3c7;border-color:#f59e0b}
+.tbtn.reset.show{display:inline-flex}
 
 /* Step 3 */
 .sec{padding:18px;margin-bottom:12px}
@@ -159,8 +158,9 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
 .preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:12px}
 .preset-btn{display:flex;flex-direction:column;align-items:flex-start;padding:10px 12px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;border:2px solid #e2e8f0;background:#f8fafc;color:#334155;transition:all .15s;font-family:inherit;text-align:left}
 .preset-btn .ps-sub{font-size:11px;color:#94a3b8;font-weight:400;margin-top:3px}
-.preset-btn.sel{border-color:#0f766e;background:#f0fdf4;color:#065f46}
-.preset-btn.sel .ps-sub{color:#34d399}
+.preset-btn:hover{border-color:#93b4e8}
+.preset-btn.sel{border-color:#1e3a8a;background:#eff6ff;color:#1e3a8a;box-shadow:0 0 0 3px rgba(30,58,138,.13)}
+.preset-btn.sel .ps-sub{color:#5b82c4}
 .dl-info{font-size:12px;color:#065f46;margin-top:6px;min-height:16px;font-weight:600}
 .clip-status{font-size:12px;margin-top:4px;font-weight:500}
 .clip-ok{color:#065f46}.clip-err{color:#dc2626}
@@ -197,12 +197,13 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
 .conv-head h2{font-size:16px;font-weight:700;margin-bottom:5px}
 .conv-head p{font-size:13px;color:#64748b;margin-bottom:18px}
 .cf-label{font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
-.cf-opts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.cf-opt{display:flex;flex-direction:column;align-items:flex-start;padding:12px 16px;border-radius:12px;border:2px solid #e2e8f0;background:#f8fafc;cursor:pointer;font-family:inherit;transition:all .15s;min-width:130px}
-.cf-opt strong{font-size:14px;font-weight:700;color:#334155;margin-bottom:3px}
-.cf-opt span{font-size:11px;color:#94a3b8}
-.cf-opt.sel{border-color:#0f766e;background:#f0fdf4}
-.cf-opt.sel strong{color:#065f46}.cf-opt.sel span{color:#34d399}
+.cf-opts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.cf-opt{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:12px 14px;border-radius:12px;border:2px solid #e2e8f0;background:#f8fafc;cursor:pointer;font-family:inherit;transition:all .15s;min-height:74px}
+.cf-opt strong{font-size:14px;font-weight:700;color:#334155;margin-bottom:4px}
+.cf-opt span{font-size:11px;color:#94a3b8;line-height:1.35}
+.cf-opt:hover{border-color:#93b4e8}
+.cf-opt.sel{border-color:#1e3a8a;background:#eff6ff;box-shadow:0 0 0 3px rgba(30,58,138,.13)}
+.cf-opt.sel strong{color:#1e3a8a}.cf-opt.sel span{color:#5b82c4}
 .quality-note{font-size:12px;padding:10px 14px;border-radius:10px;margin-bottom:16px;line-height:1.5}
 .qn-lossless{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
 .qn-high{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
@@ -220,12 +221,12 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
 .ci-meta{font-size:11px;color:#94a3b8;margin-top:1px}
 .ci-status{font-size:11px;color:#64748b;font-weight:500;white-space:nowrap}
 .ci-dl{display:none;padding:6px 11px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:none;background:#0f766e;color:white;font-family:inherit;white-space:nowrap}
-.ci-dl:hover{background:#0d9488}
+.ci-dl:hover{filter:brightness(1.08)}
 .ci-rm{padding:4px 8px;border-radius:6px;font-size:12px;cursor:pointer;border:1px solid #e2e8f0;background:white;color:#94a3b8;font-family:inherit}
 .ci-rm:hover{color:#dc2626;border-color:#fca5a5}
 .conv-actions{display:flex;gap:8px;flex-wrap:wrap}
 .conv-actions .btn{flex:1;min-width:160px;width:auto;margin:0}
-@media(max-width:560px){.cf-opts{flex-direction:column}.conv-item{grid-template-columns:28px 1fr auto auto}}
+@media(max-width:560px){.cf-opts{grid-template-columns:repeat(2,1fr)}.conv-item{grid-template-columns:28px 1fr auto auto}}
 </style>
 </head>
 <body>
@@ -343,11 +344,10 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
           <button class="tbtn" onclick="rotate(-90)">↺ Rotate L</button>
           <button class="tbtn" onclick="rotate(90)">↻ Rotate R</button>
           <button class="tbtn" id="flipBtn" onclick="doFlip()">↔ Flip</button>
-          <div class="tb-sep"></div>
-          <button class="tbtn accent" onclick="autoEnhance()" title="Auto-analyse and fix brightness & contrast">✨ Auto-Enhance</button>
-          <div class="tb-sep"></div>
-          <button class="tbtn" onclick="zoomCrop(1.18)" title="Make crop frame larger">🔍+ Bigger frame</button>
-          <button class="tbtn" onclick="zoomCrop(.85)" title="Make crop frame smaller">🔍− Smaller frame</button>
+          <button class="tbtn" onclick="autoEnhance()" title="Auto-analyse and fix brightness & contrast">✨ Auto-Enhance</button>
+          <button class="tbtn" onclick="zoomCrop(1.18)" title="Make crop frame larger">🔍 Bigger</button>
+          <button class="tbtn" onclick="zoomCrop(.85)" title="Make crop frame smaller">🔍 Smaller</button>
+          <button class="tbtn reset" id="resetBtn" onclick="resetAdj()" title="Reset brightness, contrast & saturation">↩ Reset</button>
         </div>
         <div class="card cvwrap">
           <div class="cvhint">
@@ -371,7 +371,6 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
               <input type="range" id="satSlider" min="0" max="200" value="100" step="1">
               <span class="adj-val" id="satVal">100%</span>
             </div>
-            <button class="btn-reset" id="resetBtn" onclick="resetAdj()">↩ Reset to original</button>
           </div>
         </div>
       </div>
