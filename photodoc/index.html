@@ -18,7 +18,7 @@
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#eef2f7;color:#1e293b;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#eef2f7;color:#1e293b;min-height:100vh;overflow-x:hidden}
 
 /* Header */
 header{background:linear-gradient(135deg,#0a0f1e 0%,#1e3a8a 100%);color:white;padding:14px 24px;display:flex;align-items:center;gap:16px}
@@ -181,6 +181,12 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
   .hright-detail{display:none}
   .hright-country{font-size:12px}
   #installBtn{margin-left:8px;padding:7px 11px;font-size:11px}
+  .steps{margin-bottom:18px}
+  .sl{font-size:11px;line-height:1.15}
+  .sn{width:24px;height:24px;font-size:11px}
+  .st{gap:5px}
+  .sline{margin:0 5px;max-width:24px}
+  .type-tabs-wrap,.req-card,.sec,.conv-card{padding:14px}
 }
 
 /* Print */
@@ -471,7 +477,7 @@ input[type=range]{accent-color:#1e3a8a;width:100%}
       <div class="sec-title">📱 Online form upload</div>
       <div class="sec-sub" id="onlineSub">Resized &amp; compressed for digital submission</div>
       <div class="preset-grid" id="presetGrid"></div>
-      <button class="btn btn-teal btn-sm" style="width:auto;min-width:220px" id="dlOnlineBtn" onclick="doDownloadOnline()">⬇ Download for online upload</button>
+      <button class="btn btn-teal btn-sm" style="width:auto;max-width:100%" id="dlOnlineBtn" onclick="doDownloadOnline()">⬇ Download for online upload</button>
       <div class="dl-info" id="dlInfo"></div>
     </div>
 
